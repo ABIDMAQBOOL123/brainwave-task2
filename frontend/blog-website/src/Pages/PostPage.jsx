@@ -3,11 +3,11 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Toastify from "toastify-js";
 import "toastify-js/src/toastify.css";
-import { FaTrash } from "react-icons/fa"; // Import the trash icon from react-icons
+import { FaTrash } from "react-icons/fa";
 
 const PostPage = () => {
-  const { id } = useParams(); // Get the post ID from the URL
-  const navigate = useNavigate(); // Hook for navigation
+  const { id } = useParams();
+  const navigate = useNavigate();
   const [post, setPost] = useState(null);
   const [newComment, setNewComment] = useState("");
   const [currentUserId, setCurrentUserId] = useState(null);
@@ -19,7 +19,7 @@ const PostPage = () => {
         const response = await axios.get(
           `http://localhost:5000/api/posts/${id}`
         );
-        setPost(response.data); // Set the post data in the state
+        setPost(response.data);
       } catch (error) {
         console.error("Error fetching post:", error);
 
@@ -37,7 +37,6 @@ const PostPage = () => {
     fetchPost();
   }, [id]);
 
-  // Handle comment submission
   const handleCommentSubmit = async (e) => {
     e.preventDefault();
     if (!newComment) {
@@ -68,7 +67,7 @@ const PostPage = () => {
         const newCommentData = response.data;
         setPost((prevPost) => ({
           ...prevPost,
-          comments: [...prevPost.comments, newCommentData], // Add new comment to the existing list
+          comments: [...prevPost.comments, newCommentData],
         }));
         setNewComment("");
         Toastify({

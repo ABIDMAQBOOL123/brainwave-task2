@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Toastify from "toastify-js"; // Add Toastify for notifications
+import Toastify from "toastify-js";
 import "toastify-js/src/toastify.css";
 
 const SignupForm = ({ switchToLogin }) => {
@@ -11,7 +11,7 @@ const SignupForm = ({ switchToLogin }) => {
     password: "",
   });
 
-  const [isLoading, setIsLoading] = useState(false); // Add loading state
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleInputChange = (e) => {
@@ -21,7 +21,7 @@ const SignupForm = ({ switchToLogin }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(true); // Set loading state
+    setIsLoading(true);
     try {
       const response = await axios.post(
         "http://localhost:5000/api/auth/signup",
@@ -32,7 +32,6 @@ const SignupForm = ({ switchToLogin }) => {
       );
 
       if (response) {
-        // Show success Toast notification
         Toastify({
           text: "Signup successful! Redirecting to login...",
           duration: 3000,

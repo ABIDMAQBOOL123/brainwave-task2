@@ -29,9 +29,8 @@ const CreatePostForm = () => {
     try {
       console.log(token);
       console.log({ title, content });
-      setIsLoading(true); // Start loading
+      setIsLoading(true);
 
-      // Use axios instead of fetch
       const response = await axios.post(
         "http://localhost:5000/api/posts",
         { title, content },
@@ -46,7 +45,7 @@ const CreatePostForm = () => {
 
       if (response) {
         const data = response.data;
-        // Redirect to the newly created post page
+
         navigate(`/posts/${data._id}`);
       } else {
         setError(response.data.message || "Failed to create post");
@@ -55,7 +54,7 @@ const CreatePostForm = () => {
       setError("An error occurred while creating the post.");
       console.error(error);
     } finally {
-      setIsLoading(false); // Reset loading state
+      setIsLoading(false);
     }
   };
 

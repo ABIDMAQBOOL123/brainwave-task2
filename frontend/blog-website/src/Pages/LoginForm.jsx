@@ -50,8 +50,8 @@ const LoginForm = ({ switchToSignup }) => {
         });
 
         setAuthState({
-          isAuthenticated: true, // Set the authentication status to true
-          token, // Store the token in the Recoil state
+          isAuthenticated: true,
+          token,
         });
         console.log(Cookies.get("x-auth-token"));
 
